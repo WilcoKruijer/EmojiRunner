@@ -66,7 +66,7 @@ void EmojiRunner::reloadPluginConfiguration(const QString &configFile) {
 void EmojiRunner::match(Plasma::RunnerContext &context) {
     // Remove escape character, fixed Plasma 5.20
     const auto term = QString(context.query()).remove(QString::fromWCharArray(L"\u001B")).toLower();
-    const bool prefixed = term.startsWith(queryPrefix);
+    const bool prefixed = term.startsWith(queryPrefix) || term.startsWith(queryPrefix2);
 
     QString search = term;
     if (prefixed) {
